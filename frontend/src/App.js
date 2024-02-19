@@ -1,7 +1,7 @@
 import React from 'react'
-import {Container} from 'react-bootstrap'
+import {Alert, Container} from 'react-bootstrap'
 import Header from './components/Header'
-
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -10,6 +10,7 @@ const App = () => {
         <main className="py-3">
         <h1>Welcome to Totosmart</h1>
         </main>
+        <Footer/>
     </>
   )
 }
