@@ -1,13 +1,17 @@
 import React from 'react'
 import {Nav, Navbar, Container} from 'react-bootstrap'
 import {FaShoppingCart, FaUser} from 'react-icons/fa'
+import  TotosMartLogo from '../assets/TotosMart.png'
 
 const Header = () => {
   return (
     <header>
     <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
       <Container>
-        <Navbar.Brand href='/'> TotosMart</Navbar.Brand>
+        <Navbar.Brand href='/'> 
+        <img src={TotosMartLogo} alt='TotosMart'/>
+         TotosMart
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
