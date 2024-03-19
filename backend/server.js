@@ -9,7 +9,7 @@ const port = process.env.PORT || 5000
 const app = express()
 
 app.get('/', (req,res)=>{
-    res.send('Running')
+    res.send('Server is running')
 })
 
 app.get('/api/products', (req,res)=>{

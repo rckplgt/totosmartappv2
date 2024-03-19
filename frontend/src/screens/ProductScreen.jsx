@@ -1,12 +1,27 @@
 import React from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
-import products from '../products'
 import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem, ButtonGroup } from 'react-bootstrap'
 import Rating from '../components/Rating'
+//import products from '../products'
 
 const ProductScreen = () => {
+
+
+    const [product, setProduct] = useState({})
     const {id:productId} =useParams()
-    const product = products.find((p)=>p._id === productId)
+
+    useEffect(()=>{
+        const fetchProduct = async ()=>{
+            const {data} = await axios.get(`/api/product/${productId}`)
+            setProduct(data)
+        }
+        fetchProduct()
+
+    },[productId])
+
+    //const product = products.find((p)=>p._id === productId)
 
   return (
     <>
@@ -23,7 +38,6 @@ const ProductScreen = () => {
                 <ListGroup.Item>
                     <Rating value={product.rating} text={`${product.numReviews} reviews`}/>
                 </ListGroup.Item>
-
                 <ListGroup.Item>
                     Price: KES{product.price}
                 </ListGroup.Item>
