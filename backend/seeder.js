@@ -13,9 +13,12 @@ connectDB()
 
 const importData = async ()=>{
     try {
+
+        console.log('Destroying existing data...'.yellow.inverse.italic)
         await Order.deleteMany();
         await Product.deleteMany();
         await User.deleteMany();
+        console.log('Existing data destroyed successfully. Weiting fresh data...'.yellow.inverse.italic)
 
         const createdUsers = await User.insertMany(users)
 
@@ -27,7 +30,7 @@ const importData = async ()=>{
 
         await Product.insertMany(sampleProducts)
 
-        console.log('Success. Data Inserted'.green.inverse)
+        console.log('Success. Fresh data inserted'.green.inverse)
         process.exit()
     } catch (error) {
         console.error(`Error: Data insert failed. ${error}`.red.inverse)
