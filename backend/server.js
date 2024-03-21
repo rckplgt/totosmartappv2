@@ -2,6 +2,7 @@ import express from 'express'
 import products from './data/products.js'
 import dotenv from 'dotenv'
 import productRoutes from './routes/productRoutes.js'
+import {errorHandler, notFound} from './middleware/errorMiddleware.js'
 
 
 dotenv.config()
@@ -18,6 +19,7 @@ app.get('/', (req,res)=>{
 })
 
 app.use('/api/products', productRoutes)
+app.use('/api/product', productRoutes)
 
 
 app.listen(port,()=>console.log(`Listening on port ${port}`))
