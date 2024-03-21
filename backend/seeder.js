@@ -14,11 +14,11 @@ connectDB()
 const importData = async ()=>{
     try {
 
-        console.log('Destroying existing data...'.yellow.inverse.italic)
+
         await Order.deleteMany();
         await Product.deleteMany();
         await User.deleteMany();
-        console.log('Existing data destroyed successfully. Weiting fresh data...'.yellow.inverse.italic)
+        console.log('Existing data destroyed successfully. Writing fresh data...'.yellow.inverse.italic)
 
         const createdUsers = await User.insertMany(users)
 
@@ -30,7 +30,7 @@ const importData = async ()=>{
 
         await Product.insertMany(sampleProducts)
 
-        console.log('Success. Fresh data inserted'.green.inverse)
+        console.log('Fresh data inserted successfully.'.green.inverse)
         process.exit()
     } catch (error) {
         console.error(`Error: Data insert failed. ${error}`.red.inverse)
@@ -48,7 +48,7 @@ const destroyData = async ()=>{
 
         process.exit()
     } catch (error) {
-        console.error(`Error: Delete failed. ${error}`.red.inverse)        
+        console.error(`Error: Delete failed. ${error.message}`.red.inverse)        
     }
 }
 
